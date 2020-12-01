@@ -18,6 +18,7 @@ async function main() {
     core.setOutput('number', pr && pr.number || '');
     core.setOutput('title', pr && pr.title || '');
     core.setOutput('body', pr && pr.body || '');
+    core.setOutput('ready', pr && pr.draft === false && pr.requested_reviewers.length > 0 && 'true' || false);
 }
 
 main().catch(err => core.setFailed(err.message));
